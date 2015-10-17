@@ -44,7 +44,7 @@ def classify(pronoun):
         classes.append('shopping')
     if 'travel' in pronoun or 'vacation' in pronoun or 'airline' in pronoun:
         classes.append('travel')
-    if 'video game' in pronoun or 'gaming' in pronoun:
+    if 'video game' in pronoun or 'gaming' in pronoun or 'multiplayer' in pronoun or 'single player' in pronoun:
         classes.append('video games')
     if(len(classes) == 0):
         classes.append('other')
