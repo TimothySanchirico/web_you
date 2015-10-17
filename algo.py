@@ -52,50 +52,26 @@ def classify(pronoun):
 #food, shopping, travel, video games, 
 
 def relExtract(company, summary):
-    # text = open('summary.txt')
-    # company = text.next()
-    # summary = text.next()
+   
 
     alchemyapi = AlchemyAPI()
 
-    # print('Processing text: ', summary)
-    # print('')
+    
 
     response = alchemyapi.relations('text', summary)
 
-   # if response['status'] == 'OK':
-    #    print('## Object ##')
-     #   print(json.dumps(response, indent=4))
 
     for relation in response['relations']:
         if 'subject' in relation:
             if company.lower().strip() in relation['subject']['text'].encode('utf-8').lower():
-                # print(company.strip() + ' is ' +  relation['object']['text'].encode('utf-8'))
-                #print('hi')
+                
                 return classify(relation['object']['text'].encode('utf-8').lower())
                 break
 
-    #     print('')
-    #     print('## Relations ##')
-    #     for relation in response['relations']:
-    #         if 'subject' in relation:
-    #             print('Subject: ', relation['subject']['text'].encode('utf-8'))
 
-    #         if 'action' in relation:
-    #             print('Action: ', relation['action']['text'].encode('utf-8'))
+def company_name(user_url):
+    comps = user_url.split('.')
+    company = comps[len(comps) - 2]
+    return company
 
-    #         if 'object' in relation:
-    #             print('Object: ', relation['object']['text'].encode('utf-8'))
-
-    #         print('')
-    # else:
-    #     print('Error in relation extaction call: ', response['statusInfo'])
-
-
-    # print('')
-
-
-
-# flag = 1
-# while(flag == 1):
-# relExtract()
+   
