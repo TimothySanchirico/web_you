@@ -3,7 +3,7 @@ from algo import relExtract
 app = Flask(__name__)
 
 @app.route('/classify_url', methods=['POST'])
-def get_bot_mission():
+def classify_url():
 	if(request.method == 'POST'):
 		company = request.form['company']
 		summary = request.form['summary']
@@ -14,6 +14,12 @@ def get_bot_mission():
 		return rel_text
 
    	return "Didn't receive shit"
+
+@app.route('/get_url', methods = ['POST'])
+def get_url():
+	if(request.method == 'POST'):
+		return "GOT SOME SHIT FORM GET URL"
+	return "nothing from get_url"
 
 
 if __name__ == '__main__':
