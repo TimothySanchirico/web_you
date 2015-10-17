@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+
+  "name": "Web You",
+  "description": "Penis Galore",
+  "version": "1.0",
+
+
+  "background": {
+    "scripts: [background.js"]
+  },
+  "chrome_url_overrides" : {
+     "newtab": "webyou.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"'
+      ],
+      "js": ["jquery-2.1.4.min.js", "content.js"]
+    }
+  ]
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "<all_urls>"
+  ]
+}
