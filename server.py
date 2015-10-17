@@ -18,7 +18,10 @@ def classify_url():
 @app.route('/get_url', methods = ['POST'])
 def get_url():
 	if(request.method == 'POST'):
-		return "GOT SOME SHIT FORM GET URL"
+		curr_url = request.form['current_domain']
+		if(curr_url == None):
+			return "No current domain field"
+		return "returning response: " + str(curr_url)
 	return "nothing from get_url"
 
 
