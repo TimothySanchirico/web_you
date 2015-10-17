@@ -18,6 +18,11 @@
 from __future__ import print_function
 from alchemyapi import AlchemyAPI
 import json
+import urllib
+import mechanize
+from bs4 import BeautifulSoup
+import re
+import urlparse
 
 classes = []
 
@@ -74,4 +79,19 @@ def company_name(user_url):
     company = comps[len(comps) - 2]
     return company
 
-   
+def wiki_url(company):
+    br = mechanize.Browser()
+    br.set_handle_robots(False)
+    br.set_handle_equiv(False)
+    br.addheaders = [('User-agent', 'Mozilla/5.0')] 
+    br.open('http://www.google.com/') 
+    # do the query
+    br.select_form(name='f')   
+    br.form['q'] = company +' wikipedia' # query
+    data = br.submit()
+    soup = BeautifulSoup(data.read(), "lxml")
+    links = []
+    for a in soup.select('.r a'):
+        links.append(urlparse.parse_qs(urlparse.urlparse(a['href']).query)['q'][0])
+    wiki_links = [link for link in links if "wikipedia" in link]
+    return wiki_links[0]

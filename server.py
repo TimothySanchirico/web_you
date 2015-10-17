@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, jsonify
-from algo import relExtract, company_name
+from algo import relExtract, company_name, wiki_url
 app = Flask(__name__)
 
 @app.route('/classify_url', methods=['POST'])
@@ -24,7 +24,8 @@ def get_url():
 		curr_company = company_name(curr_url)
 		if(curr_url == None) or curr_url == 'newtab':
 			return "None"
-		return "Using the website owned by: " + curr_company
+		relevant_url = wiki_url(curr_company)
+		return "Using the website owned by: " + company
 	return "nothing from get_url"
 
 
