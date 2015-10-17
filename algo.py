@@ -48,18 +48,18 @@ def classify(pronoun):
         classes.append('video games')
     if(len(classes) == 0):
         classes.append('other')
-    print(classes)
+    return classes
 #food, shopping, travel, video games, 
 
-def relExtract():
-    text = open('summary.txt')
-    company = text.next()
-    summary = text.next()
+def relExtract(company, summary):
+    # text = open('summary.txt')
+    # company = text.next()
+    # summary = text.next()
 
     alchemyapi = AlchemyAPI()
 
-    print('Processing text: ', summary)
-    print('')
+    # print('Processing text: ', summary)
+    # print('')
 
     response = alchemyapi.relations('text', summary)
 
@@ -70,9 +70,9 @@ def relExtract():
     for relation in response['relations']:
         if 'subject' in relation:
             if company.lower().strip() in relation['subject']['text'].encode('utf-8').lower():
-                print(company.strip() + ' is ' +  relation['object']['text'].encode('utf-8'))
+                # print(company.strip() + ' is ' +  relation['object']['text'].encode('utf-8'))
                 #print('hi')
-                classify(relation['object']['text'].encode('utf-8').lower())
+                return classify(relation['object']['text'].encode('utf-8').lower())
                 break
 
     #     print('')
@@ -92,10 +92,10 @@ def relExtract():
     #     print('Error in relation extaction call: ', response['statusInfo'])
 
 
-    print('')
+    # print('')
 
 
 
 # flag = 1
 # while(flag == 1):
-relExtract()
+# relExtract()

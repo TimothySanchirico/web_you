@@ -1,12 +1,17 @@
 from flask import Flask, render_template, request, url_for, jsonify
-from test_func import peter_func
+from algo import relExtract
 app = Flask(__name__)
 
-@app.route('/tests/endpoint', methods=['POST'])
+@app.route('/classify_url', methods=['POST'])
 def get_bot_mission():
 	if(request.method == 'POST'):
-		data = request.form['test_field'] 
-		return "post req recieved: " + peter_func(data)
+		company = request.form['company']
+		summary = request.form['summary']
+		relations = relExtract(company, summary)
+		rel_text =""
+		for rel in relations:
+			rel_text += rel + ":"
+		return rel_text
 
    	return "Didn't receive shit"
 
