@@ -5,23 +5,38 @@ var colorscale = d3.scale.category10();
 
 //Legend titles
 // var LegendOptions = ['Smartphone','Tablet'];
+var sum = 0;
+var class_array;
+chrome.storage.local.get('user_history', function(result){
+    class_array = result['user_history'];
+});
+
+
+for(var i = 0; i < class_array.length; i++){
+	sum += class_array[i];
+	console.log(class_array[i]);
+}
+
+for(var i = 0; i < class_array.length; i++){
+	class_array[i] = class_array[i] / sum;
+}
 
 //Data
 var d = [
 		  [
-			{axis:"Social",value:0.48},
-			{axis:"Education",value:0.41},
-			{axis:"Business",value:0.27},
-			{axis:"Programming",value:0.28},
-			{axis:"Sports",value:0.46},
-			{axis:"Politics",value:0.29},
-			{axis:"News",value:0.11},
-			{axis:"Religion",value:0.14},
-			{axis:"Food",value:0.05},
-			{axis:"Shopping",value:0.19},
-			{axis:"Travel",value:0.14},
-			{axis:"Video games",value:0.06},
-			{axis:"Other", value:0.03}
+			{axis:"Social",value: class_array[0]},
+			{axis:"Education",value: class_array[1]},
+			{axis:"Business",value: class_array[2]},
+			{axis:"Programming",value: class_array[3]},
+			{axis:"Sports",value: class_array[4]},
+			{axis:"Politics",value:  class_array[5]},
+			{axis:"News",value:  class_array[6]},
+			{axis:"Religion",value:  class_array[7]},
+			{axis:"Food",value:  class_array[8]},
+			{axis:"Shopping",value:  class_array[9]},
+			{axis:"Travel",value:  class_array[10]},
+			{axis:"Video games",value:  class_array[11]},
+			{axis:"Other", value:  class_array[12]}
 			
 		  ]
 		];

@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com  https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js; object-src 'self'",
   "name": "Web You",
   "description": "Penis Galore",
   "version": "1.0",
@@ -17,7 +17,7 @@
       "matches": [
         "<all_urls>"
       ],
-      "js": ["content.js", "webyou.js"]
+      "js": ["content.js", "webyou.js", "script.js", "RadarChart.js", "RadarChart2.js", "script2.js"]
     }
   ],
   "permissions": [
