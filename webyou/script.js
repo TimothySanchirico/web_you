@@ -2,42 +2,44 @@ var w = 300,
 	h = 300;
 
 var colorscale = d3.scale.category10();
+var class_array;
 
 //Legend titles
 // var LegendOptions = ['Smartphone','Tablet'];
-var sum = 0;
-var class_array;
-chrome.storage.local.get('user_history', function(result){
-    class_array = result['user_history'];
-});
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+  	class_array = request.user_history;
+  	
 
 
-for(var i = 0; i < class_array.length; i++){
-	sum += class_array[i];
-	console.log(class_array[i]);
-}
 
-for(var i = 0; i < class_array.length; i++){
-	class_array[i] = class_array[i] / sum;
-}
+
+
+  });
+
+
+function draw_person_shit(personal_array){
+	var w = 300,
+	h = 300;
+
+var colorscale = d3.scale.category10();
+
+//Legend titles
+// var LegendOptions = ['Smartphone','Tablet'];
+
+
+//Legend titles
+// var LegendOptions = ['Smartphone','Tablet'];
+
 
 //Data
 var d = [
 		  [
-			{axis:"Social",value: class_array[0]},
-			{axis:"Education",value: class_array[1]},
-			{axis:"Business",value: class_array[2]},
-			{axis:"Programming",value: class_array[3]},
-			{axis:"Sports",value: class_array[4]},
-			{axis:"Politics",value:  class_array[5]},
-			{axis:"News",value:  class_array[6]},
-			{axis:"Religion",value:  class_array[7]},
-			{axis:"Food",value:  class_array[8]},
-			{axis:"Shopping",value:  class_array[9]},
-			{axis:"Travel",value:  class_array[10]},
-			{axis:"Video games",value:  class_array[11]},
-			{axis:"Other", value:  class_array[12]}
-			
+			{axis:"Neuroticism",value:0.99},
+			{axis:"Openness",value:0.41},
+			{axis:"Extroversion",value:0.27},
+			{axis:"Agreeableness",value:0.28},
+			{axis:"Conscienciousness", value:0.03}
 		  ]
 		];
 
@@ -52,14 +54,15 @@ var mycfg = {
 
 //Call function to draw the Radar chart
 //Will expect that data is in %'s
-RadarChart.draw("#chart", d, mycfg);
+RadarChart.draw("#chart2", d, mycfg);
 
 ////////////////////////////////////////////
 /////////// Initiate legend ////////////////
 ////////////////////////////////////////////
 
-var svg = d3.select('#body')
+var svg = d3.select('#body2')
 	.selectAll('svg')
 	.append('svg')
 	.attr("width", w+300)
 	.attr("height", h)
+}

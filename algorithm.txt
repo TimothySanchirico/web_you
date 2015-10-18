@@ -1,0 +1,56 @@
+Mapping of site category to personality:
+
+social: Neuroticism, Concientiousness
+
+educational: Openness, Extraversion
+
+business: Extraversion
+
+programming: Neuroticism, Extraversion
+
+sports: Extraversion
+
+politics: Concientiousness, Openness
+
+news: Concientiousness, Openness
+
+religion: Concientiousness
+
+food: Openness, Extraversion
+
+shopping: Neuroticism
+
+travel: Openness, Extraversion, Agreeableness
+
+videogames: Neuroticism, Extraversion
+
+other: no weight
+
+
+/* Implement using a 5 indexed array of floats, saved locally */
+
+social = .5 Neuroticism, .5 Concientiousness
+
+educational = .5 Openness, .5 Extraversion
+
+business: 1 Extraversion
+
+programming = .5 Neuroticism, .5 Extraversion
+
+sports = 1 Extraversion
+
+politics = .5 Concientiousness, .5 Openness
+
+news = .5 Concientiousness, .5 Openness
+
+religion = 1 Concientiousness
+
+food = .5 openness, .5 extraversion
+
+shopping = 1 Neuroticism
+
+travel = .33 Openness, .33 Extraversion, .33 Agreeableness
+
+videogames = .5 Neuroticism, .5 Extraversion
+
+other = 0

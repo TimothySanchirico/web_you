@@ -6,6 +6,16 @@ var colorscale = d3.scale.category10();
 //Legend titles
 // var LegendOptions = ['Smartphone','Tablet'];
 
+var personality_array;
+
+//Legend titles
+// var LegendOptions = ['Smartphone','Tablet'];
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+  	personality_array = request.personality;
+
+  });
+
 //Data
 var d = [
 		  [

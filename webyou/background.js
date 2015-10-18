@@ -44,7 +44,12 @@ function save_arrays(){
   chrome.storage.local.set({'user_history': class_array}, function(res){
     console.log(res);
   });
-
+  // push them to content scripts
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {personality: personality_array, history: class_array}, function(response) {
+      
+    });
+  });
 }
 
 // Openness, Extraversion, Neuroticism, Concientiousness, Agreeableness : order of personality_array
