@@ -33,7 +33,7 @@ def classify(pronoun):
         classes.append('educational')
     if 'business' in pronoun or 'financial' in pronoun or 'trading' in pronoun or 'stocks' in pronoun or 'investment' in pronoun:
         classes.append('business')
-    if 'software' or 'code' or 'program' in pronoun:
+    if 'software' in pronoun or 'code' in pronoun or 'program' in pronoun:
         classes.append('programming')
     if 'sport' in pronoun or 'basektball' in pronoun or 'baseball' in pronoun or 'football' in pronoun or 'tennis' in pronoun or 'swim' in pronoun or 'run' in pronoun or 'soccer' in pronoun:
         classes.append('sports')
@@ -95,3 +95,7 @@ def wiki_url(company):
         links.append(urlparse.parse_qs(urlparse.urlparse(a['href']).query)['q'][0])
     wiki_links = [link for link in links if "wikipedia" in link]
     return wiki_links[0]
+
+def extract_text(link):
+    soup = BeautifulSoup(urllib.urlopen(link).read())
+    return soup.p.get_text()
