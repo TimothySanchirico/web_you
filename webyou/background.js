@@ -10,6 +10,16 @@ function parse_response(response){
  
 }
 
+function checkIdleTime(newState) {
+  console.log("Checking idle behavior " + newState);
+  if ((newState == "idle" || newState == "locked") &&
+      localStorage["paused"] == "false") {
+    pause();
+  } else if (newState == "active") {
+    resume();
+  }
+}
+
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   if (changeInfo.status == 'complete' && tab.active) {
   	chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
@@ -20,7 +30,8 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
        console.log("OnUpdated Request fired.........")
         $.post('http://127.0.0.1:5000/get_url', {'current_domain':curr_domain}, 
             function(resp){
-              parse_response(resp)
+              console.log(resp)
+              // parse_response(resp)
               // parse_response(resp);
               /* Parse the response "class:class:class" */
               /* Add to storage*/ 
@@ -40,12 +51,16 @@ chrome.tabs.onActivated.addListener( function (info) {
         console.log("OnActivated Request fired.........")
         $.post('http://127.0.0.1:5000/get_url', {'current_domain':curr_domain}, 
             function(resp){
-             parse_response(resp)
+              console.log(resp)
+             // parse_response(resp)
         });
         curr_domain=curr_domain_old;
       }
   });
-})
+});
+
+
+chrome.idle.queryState(60, checkIdleTime);
 
 
 
