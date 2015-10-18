@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' https://ajax.googleapis.com  https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js; object-src 'self'",
   "name": "Web You",
-  "description": "Penis Galore",
+  "description": "A New Way to Learn About Yourself",
   "version": "1.0",
 
 

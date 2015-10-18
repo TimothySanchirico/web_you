@@ -61,18 +61,22 @@ function personality_algorithm(classes){
         class_array[0]++;
         personality_array[2] = personality_array[2] + 0.5;
         personality_array[3] = personality_array[3] + 0.5;
+        personality_array[1] = personality_array[1] + 0.2;
+        personality_array[0] = personality_array[0] + 0.2;
 
     }
     else if(classes[i] == 'educational'){
       class_array[1]++;
       personality_array[0] = personality_array[0] + 0.5;
       personality_array[1] = personality_array[1] + 0.5;
-      
+      personality_array[3] = personality_array[3] + 0.2;
+
     }
     else if(classes[i] == 'business'){
       class_array[2]++;
-      personality_array[2] = personality_array[2] + 0.5;
+      personality_array[2] = personality_array[2] + 0.2;
       personality_array[3] = personality_array[3] + 0.5;
+      personality_array[1] = personality_array[1] + 0.5;
     }
     else if(classes[i] == 'programming'){
       class_array[3]++;
@@ -82,12 +86,16 @@ function personality_algorithm(classes){
     }
     else if(classes[i] == 'sports'){
       class_array[4]++;
-      personality_array[1] = personality_array[1] + 1;
+      personality_array[1] = personality_array[1] + 0.5;
+      personality_array[0] = personality_array[0] + 0.1;
     }
     else if(classes[i] == 'politics'){
       class_array[5]++;
-      personality_array[3] = personality_array[3] + 0.5;
-      personality_array[0] = personality_array[0] + 0.5;
+        personality_array[2] = personality_array[2] + 0.5;
+        personality_array[0] = personality_array[0] + 0.5;
+      if (personality_array[4]>0.5){
+        personality_array[4]=personality_array[4]-0.25;
+      }
     }
     else if(classes[i] == 'news'){
       class_array[6]++;
@@ -97,6 +105,7 @@ function personality_algorithm(classes){
     else if(classes[i] == 'religion'){
       class_array[7]++;
       personality_array[3] = personality_array[3] + 1;
+      personality_array[4] = personality_array[4] + 0.5;
     }
     else if(classes[i] == 'food'){
       class_array[8]++;
@@ -119,7 +128,7 @@ function personality_algorithm(classes){
       personality_array[1] = personality_array[1] + 0.5;
     }
     else if(classes[i] == 'other'){
-      class_array[12]++;
+      class_array[12] = class_array[12] + 0.1;
     }
 
   }
