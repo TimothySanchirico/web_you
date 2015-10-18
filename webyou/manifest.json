@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
   "name": "Web You",
   "description": "Penis Galore",
   "version": "1.0",
@@ -17,7 +17,7 @@
       "matches": [
         "<all_urls>"
       ],
-      "js": ["content.js"]
+      "js": ["content.js", "webyou.js"]
     }
   ],
   "permissions": [

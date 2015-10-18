@@ -4,7 +4,7 @@ chrome.runtime.onMessage.addListener(
 
 
 
-      console.log(curr_domain);
+      console.log("FUCK YOUR FACE");
       // This line is new!
       //chrome.runtime.sendMessage({"message": "open_new_tab", "url": firstHref});
     }
