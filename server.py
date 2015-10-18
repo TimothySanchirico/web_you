@@ -25,7 +25,7 @@ def get_url():
 		if(curr_url == None) or curr_url == 'newtab':
 			return "None"
 		relevant_url = wiki_url(curr_company)
-		return "Using the website owned by: " + company
+		return "Using the website owned by: " + relevant_url
 	return "nothing from get_url"
 
 
