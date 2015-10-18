@@ -24,16 +24,17 @@ from bs4 import BeautifulSoup
 import re
 import urlparse
 
-classes = []
+
 
 def classify(pronoun):
+    classes = []
     if 'social' in pronoun or 'friends' in pronoun or 'network' in pronoun:
         classes.append('social')
     if 'education' in pronoun or 'learning' in pronoun:
         classes.append('educational')
     if 'business' in pronoun or 'financial' in pronoun or 'trading' in pronoun or 'stocks' in pronoun or 'investment' in pronoun:
         classes.append('business')
-    if 'software' in pronoun or 'code' in pronoun or 'program' in pronoun:
+    if 'software' in pronoun or 'code' in pronoun or 'program' in pronoun or 'git' in pronoun:
         classes.append('programming')
     if 'sport' in pronoun or 'basektball' in pronoun or 'baseball' in pronoun or 'football' in pronoun or 'tennis' in pronoun or 'swim' in pronoun or 'run' in pronoun or 'soccer' in pronoun:
         classes.append('sports')

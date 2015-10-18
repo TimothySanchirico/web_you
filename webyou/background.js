@@ -10,6 +10,23 @@ function parse_response(response){
  
 }
 
+function extractDomain(url) {
+    var domain;
+    //find & remove protocol (http, ftp, etc.) and get domain
+    if (url.indexOf("://") > -1) {
+        domain = url.split('/')[2];
+    }
+    else {
+        domain = url.split('/')[0];
+    }
+
+    //find & remove port number
+    domain = domain.split(':')[0];
+
+    return domain;
+}
+
+
 function checkIdleTime(newState) {
   console.log("Checking idle behavior " + newState);
   if ((newState == "idle" || newState == "locked") &&
@@ -23,15 +40,14 @@ function checkIdleTime(newState) {
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   if (changeInfo.status == 'complete' && tab.active) {
   	chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
-    var data_url = tabs.url;
-    console.log("OnUpdated Request fired.........")
-    curr_domain=data_url.match(/^[\w-]+:\/*\[?([\w\.:-]+)\]?(?::\d+)?/)[1];
+    var data_url = tabs[0].url;
+    curr_domain=extractDomain(data_url)
     if(curr_domain!=curr_domain_old) {
-       console.log("OnUpdated Request fired.........")
+       console.log("OnUpdated Request fired........." + curr_domain)
         $.post('http://127.0.0.1:5000/get_url', {'current_domain':curr_domain}, 
             function(resp){
-              console.log(resp)
-              // parse_response(resp)
+              // console.log(resp)
+              parse_response(resp)
               // parse_response(resp);
               /* Parse the response "class:class:class" */
               /* Add to storage*/ 
@@ -46,13 +62,13 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
 chrome.tabs.onActivated.addListener( function (info) {
   chrome.tabs.get(info.tabId, function(tab){
       var curr_url = tab.url;
-      curr_domain=curr_url.match(/^[\w-]+:\/*\[?([\w\.:-]+)\]?(?::\d+)?/)[1];
+      curr_domain=extractDomain(curr_url)
       if(curr_domain!=curr_domain_old) {
         console.log("OnActivated Request fired.........")
         $.post('http://127.0.0.1:5000/get_url', {'current_domain':curr_domain}, 
             function(resp){
-              console.log(resp)
-             // parse_response(resp)
+              // console.log(resp)
+             parse_response(resp)
         });
         curr_domain=curr_domain_old;
       }
