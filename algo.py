@@ -30,7 +30,7 @@ def classify(pronoun):
     classes = []
     if 'social' in pronoun or 'friends' in pronoun or 'network' in pronoun:
         classes.append('social')
-    if 'education' in pronoun or 'learning' in pronoun:
+    if 'education' in pronoun or 'learning' in pronoun or 'school' in pronoun or 'university' in pronoun:
         classes.append('educational')
     if 'business' in pronoun or 'financial' in pronoun or 'trading' in pronoun or 'stocks' in pronoun or 'investment' in pronoun:
         classes.append('business')
@@ -38,7 +38,7 @@ def classify(pronoun):
         classes.append('programming')
     if 'sport' in pronoun or 'basektball' in pronoun or 'baseball' in pronoun or 'football' in pronoun or 'tennis' in pronoun or 'swim' in pronoun or 'run' in pronoun or 'soccer' in pronoun:
         classes.append('sports')
-    if 'politic' in pronoun:
+    if 'politic' in pronoun or 'debate' in pronoun:
         classes.append('politics')
     if 'news' in pronoun or 'articles' in pronoun or 'post' in pronoun or 'insider' in pronoun:
         classes.append('news')
@@ -46,9 +46,9 @@ def classify(pronoun):
         classes.append('religion')
     if 'food' in pronoun or 'eat' in pronoun or 'cook' in pronoun or 'restaurant' in pronoun:
         classes.append('food')
-    if 'shop' in pronoun or 'buy' in pronoun or 'purchase' in pronoun:
+    if 'shop' in pronoun or 'buy' in pronoun or 'purchase' in pronoun or 'commerce' in pronoun:
         classes.append('shopping')
-    if 'travel' in pronoun or 'vacation' in pronoun or 'airline' in pronoun:
+    if 'travel' in pronoun or 'vacation' in pronoun or 'airline' in pronoun or 'trans' in pronoun:
         classes.append('travel')
     if 'video game' in pronoun or 'gaming' in pronoun or 'multiplayer' in pronoun or 'single player' in pronoun:
         classes.append('video games')
